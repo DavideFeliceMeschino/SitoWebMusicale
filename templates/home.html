@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+<!-- Event Section Begin carousel-->
+<section class="event spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Carosello con SEI Foto</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="event__slider owl-carousel">
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static "img/events/event-1.jpg" %}">
+                            <div class="tag-date">
+                                <span>Dec 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>David Guetta Miami Ultra</h4>
+                            <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static "img/events/event-2.jpg" %}">
+                            <div class="tag-date">
+                                <span>Dec 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>David Guetta Miami Ultra</h4>
+                            <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static "img/events/event-3.jpg" %}">
+                            <div class="tag-date">
+                                <span>Dec 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>David Guetta Miami Ultra</h4>
+                            <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="event__item">
+                        <div class="event__item__pic set-bg" data-setbg="{% static "img/events/event-2.jpg" %}">
+                            <div class="tag-date">
+                                <span>Dec 15, 2019</span>
+                            </div>
+                        </div>
+                        <div class="event__item__text">
+                            <h4>David Guetta Miami Ultra</h4>
+                            <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+<!-- Event Section End -->
+<div class="container">
+    <h2>Calendario Eventi</h2>
+    <div class="row">
+        <div class="col-lg-3 col-md-6">
+            
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">Titolo del Evento</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Data</h6>
+                  <p class="card-text">Descrizione</p>
+                  <p class="card-text">Luogo</p>
+                  <a href="#" class="card-link">Card link</a>
+                  <a href="#" class="card-link">Another link</a>
+                </div>
+              </div>
+        
+        </div>
+        {% comment %} <div class="col-lg-4 offset-lg-1 col-md-6">
+            <div>
+                <h2>DJoz</h2>
+                <div class="footer__social__links">
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>
+                    <a href="#"><i class="fa fa-dribbble"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 offset-lg-1 col-md-6">
+            <div>
+                <ul>
+                    <li><a href="{% url "gruppo:home" %}">Home</a></li>
+                    <li><a href="{% url "gruppo:foto" %}">Foto</a></li>
+                    <li><a href="{% url "gruppo:video" %}">Video</a></li>
+                    
+                    <li><a href="{% url "gruppo:lavoraconnoi" %}">Lavora con Noi</a></li>
+                    <li><a href="{% url "gruppo:prenotaevento" %}">Prenota Evento</a></li>                                
+                   
+                </ul>
+            
+            </div>
+        </div> {% endcomment %}
+    </div>
+    
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+{% endblock content %}

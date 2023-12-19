@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titolo %}Foto{% endblock titolo %}
+
+{% block content %}
+<section class="youtube spad">
+    <h2>Foto del Gruppo</h2>
+    <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <img src="{% static "img/hero-bg.png" %}" class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-sm">
+            <img src="{% static "img/hero-bg.png" %}" class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-sm">
+            <img src="{% static "img/hero-bg.png" %}" class="img-thumbnail" alt="...">
+          </div>
+          <div class="col-sm">
+            <img src="{% static "img/hero-bg.png" %}" class="img-thumbnail" alt="...">
+          </div>
+        </div>
+      </div>
+<br><br><br><br>
+      <div class="container">
+        Commenti degli Utenti
+      </div>
+</section>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+{% endblock content %}
