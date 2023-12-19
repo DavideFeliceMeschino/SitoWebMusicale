@@ -1,8 +1,10 @@
 from django.shortcuts import render
+from .models import Carousel
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html',{})
+    slides = Carousel.objects.all()
+    return render(request, 'home.html',{'slides':slides})
 
 def fotopage(request):
     return render(request, 'fotopage.html', {})
