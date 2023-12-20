@@ -3,17 +3,23 @@
 
 {% block content %}
 <section class="youtube spad">
-<h2>Lavora Con Noi</h2>
+
 <div class="container">
-    <form method="post" action="{% url "gruppo:chisiamo" %}">
-    <div class="form-group">
+  
+  <h2>Lavora Con Noi</h2>
+  <div class="form-group">
+    <form method="post" action="{% url "gruppo:lavoraconnoi" %}">
+    
       {% csrf_token %}
       {{form.as_div}}
         
-        <button type="submit" class="btn btn-primary">Invia</button>
+      <button type="submit" class="btn btn-primary">Invia</button>
     </form>
+  <div>
 </div>
 </section>
+
+
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 {% endblock content %}
 

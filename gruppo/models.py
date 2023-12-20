@@ -44,9 +44,9 @@ class Artisti(models.Model):
     cognome = models.CharField(max_length=200)
     data_nascita = models.DateField('Data di nascita')
     strumento = models.CharField(max_length=200)
-    email = models.CharField(max_length=200)
+    email = models.EmailField(max_length=200)
     esperienza = models.TextField()
-    img = models.ImageField('Foto Profilo', upload_to='img_artisti', default=None)
+    img = models.ImageField('Foto Profilo', upload_to='img_artisti', blank=True,null=True)
     img_resize =ImageSpecField(source='img', processors=[ResizeToFit(150,150)], format='PNG',options={'quality':50})
 
     def __str__(self):
@@ -54,16 +54,36 @@ class Artisti(models.Model):
     
     def img_preview(self):
         return mark_safe(f'<img src="{self.img.url}" width=150/>')
+    
+class Foto(models.Model):
+    data_inserimento=models.DateTimeField(auto_now_add=True)
+    img = models.ImageField(upload_to='img_fotopage/%Y/%m/%d', default='logo.png')
+    img_resize = ImageSpecField(source='img', processors=[ResizeToFit(250,250)],format='PNG',options={'quality':60})
+
+    def __str__(self):
+        return f"{self.img.url}"
+    
+
+    def img_preview(self):
+        return mark_safe(f'<img src="{self.img.url}" width="150" />')
 
 
 class Candidati(models.Model):
     nome = models.CharField(max_length=200)
     cognome = models.CharField(max_length=200)
     data_nascita = models.DateTimeField()
-    email = models.CharField(max_length=200)
-    eperienza = models.TextField()
+    email = models.EmailField(max_length=200)
+    esperienza = models.TextField()
     strumento = models.CharField(max_length=200)
 
     def __str__(self):
         return f'{self.nome} {self.cognome}'
 
+class Commenti(models.Model):
+    nome = models.CharField(max_length=200)
+    email = models.EmailField(max_length=250)
+    commento = models.TextField()
+    
+
+    def __str__(self):
+        return (f"{self.nome}" f"({self.creato_il: %Y-%m-%d %H:%M}): " f"{self.commento}...")

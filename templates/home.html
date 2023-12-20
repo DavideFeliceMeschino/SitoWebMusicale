@@ -47,8 +47,8 @@
 <div class="container">
     <h2>Calendario Eventi</h2>
     <div class="row">
-        <div class="col-lg-3 col-md-6">
-            {% for evento in eventi  %}
+        {% for evento in eventi  %}
+        <div class="col-lg-3 col-md-6">            
             <div class="card" style="width: 18rem;">
                 <img src="{{evento.img.url}}" class="card-img-top" alt="{{evento.titolo}}">
                 <div class="card-body">
@@ -56,40 +56,12 @@
                   <h6 class="card-subtitle mb-2 text-muted">{{evento.data}}</h6>
                   <p class="card-text">{{evento.descrizione}}</p>
                   <p class="card-text">{{evento.luogo}}</p>
-                  {% comment %} <a href="#" class="card-link">Card link</a>
-                  <a href="#" class="card-link">Another link</a> {% endcomment %}
+                 
                 </div>
-              </div>                  
-        </div><br><br>  <br><br>  
-        {% endfor %}
-        
-        {% comment %} <div class="col-lg-4 offset-lg-1 col-md-6">
-            <div>
-                <h2>DJoz</h2>
-                <div class="footer__social__links">
-                    <a href="#"><i class="fa fa-facebook"></i></a>
-                    <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-instagram"></i></a>
-                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                </div>
-            </div>
+              </div>                
         </div>
-        <div class="col-lg-3 offset-lg-1 col-md-6">
-            <div>
-                <ul>
-                    <li><a href="{% url "gruppo:home" %}">Home</a></li>
-                    <li><a href="{% url "gruppo:foto" %}">Foto</a></li>
-                    <li><a href="{% url "gruppo:video" %}">Video</a></li>
-                    
-                    <li><a href="{% url "gruppo:lavoraconnoi" %}">Lavora con Noi</a></li>
-                    <li><a href="{% url "gruppo:prenotaevento" %}">Prenota Evento</a></li>                                
-                   
-                </ul>
-            
-            </div>
-        </div> {% endcomment %}
-    </div>
-    
+        {% endfor %}      
+    </div>   
 </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 

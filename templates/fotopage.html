@@ -15,47 +15,15 @@
             </div>
         </div>
         <div class="row">
-          {% for evento in eventi  %}
+        {% for foto in foto %}
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <div class="discography__item">
                     <div class="discography__item__pic">
-                        <img src="{{evento.img.url}}" alt="{{evento.titolo}}">
+                        <img src="{{foto.img.url}}">
                     </div>
-                    <div class="discography__item__text">
-                        
-                        <h4>{{evento.titolo}}</h4>
-                        <a href="#"><img src="img/discography/link-1.jpg" alt=""></a>
-                        <a href="#"><img src="img/discography/link-2.jpg" alt=""></a>
-                    </div>
-                </div>
-                
+                </div>                
             </div>
-            {% endfor %}
-            
-            
-            
-            
-            {% comment %} <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="discography__item">
-                    <div class="discography__item__pic">
-                        <img src="img/discography/disco-6.jpg" alt="">
-                    </div>
-                    <div class="discography__item__text">
-                        <span>$ 52.00</span>
-                        <h4>EDM Party Electro House</h4>
-                        <a href="#"><img src="img/discography/link-1.jpg" alt=""></a>
-                        <a href="#"><img src="img/discography/link-2.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div> {% endcomment %}
-            {% comment %} <div class="col-lg-12">
-                <div class="pagination__links">
-                    <a href="#">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
-                    <a href="#">Next</a>
-                </div>
-            </div> {% endcomment %}
+        {% endfor %}    
         </div>
     </div>
 
