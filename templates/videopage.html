@@ -6,50 +6,63 @@
 
 <!-- Youtube Section Begin -->
     <section class="youtube spad">
-        <h2>Video Del Gruppo</h2>
+        
         <div class="container">
             <div class="row">
+                
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Youtube feed</h2>
-                        <h1>Latest videos</h1>
+                        <h2>Video Del Gruppo</h2>
+                        
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+                {% for video in video  %}
+                <div class="col-lg-4 col-md-6 col-sm-6">                    
                     <div class="youtube__item">
-                        <div class="youtube__item__pic set-bg" data-setbg="{% static "img/youtube/youtube-1.jpg" %}">
-                            <a href="https://www.youtube.com/watch?v=yJg-Y5byMMw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                        <div class="youtube__item__pic set-bg" data-setbg="{{video.img.url}}">
+                            <a href="{{video.link}}" class="play-btn video-popup"><i class="fa fa-play"></i></a>
                         </div>
                         <div class="youtube__item__text">
-                            <h4>David Guetta Miami Ultra Music Festival 2019</h4>
+                            <h4>{{video.nome}}</h4>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="youtube__item">
-                        <div class="youtube__item__pic set-bg" data-setbg="{% static "img/youtube/youtube-2.jpg" %}">
-                            <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <div class="youtube__item__text">
-                            <h4>Martin Garrix (Full live-set) | SLAM!Koningsdag</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="youtube__item">
-                        <div class="youtube__item__pic set-bg" data-setbg="{% static "img/youtube/youtube-3.jpg" %}">
-                            <a href="https://www.youtube.com/watch?v=S19UcWdOA-I?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
-                        </div>
-                        <div class="youtube__item__text">
-                            <h4>Dimitri Vegas, Steve Aoki & Like Mike’s “3 Are Legend”</h4>
-                        </div>
-                    </div>
-                </div>
+                </div>  
+                {% endfor %}              
+            </div> 
+    
+
+
+    <br><br><br><br>
+   
+        
+     
+      <div class="container">
+        
+        <div class="row">            
+          <div class="col-10">
+            {% for commento in commenti %}
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+              <h4 class="card-title">{{commento.nome}}</h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{commento.email}}</h6>
+              <p class="card-text">{{commento.commento}}.</p>
             </div>
+          </div>
+        {% endfor %}
+          </div>
+          <div class="col-2">
+            Saluta la Band!
+            <form class="form-group" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Invia</button>
+          </div>
         </div>
-    </section> 
-    <!-- Youtube Section End -->
-    <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+      </div>
+
+</section> 
+<!-- Youtube Section End -->
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 {% endblock content %}

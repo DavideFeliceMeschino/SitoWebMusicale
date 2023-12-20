@@ -1,7 +1,7 @@
 from django import forms 
 from captcha.fields import CaptchaField
 
-from .models import Artisti,Candidati,Commenti
+from .models import Artisti,Candidati,Commenti,PrenotaEvento
 
 
 class CandidatiForm(forms.ModelForm):
@@ -37,4 +37,10 @@ class CommentiForm(forms.ModelForm):
     class Meta:
         model = Commenti
         fields = ['nome','email','commento','captcha']   
+
+class PrenotaEventiForm(forms.ModelForm):
+    captcha = CaptchaField()
+    class Meta:
+        model = PrenotaEvento
+        fields = '__all__'
         

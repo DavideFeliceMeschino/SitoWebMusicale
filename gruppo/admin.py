@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Carousel, Eventi, Artisti, Candidati, Commenti,Foto
+from .models import Carousel, Eventi, Artisti, Candidati, Commenti,Foto,Video, PrenotaEvento
 
 # Register your models here.
 class CarouselAdmin(admin.ModelAdmin):
@@ -37,5 +37,13 @@ class CommentiAdmin(admin.ModelAdmin):
 admin.site.register(Commenti,CommentiAdmin)
 
 class FotoAdmin(admin.ModelAdmin):
-    list_display = ['data_inserimento']
+    list_display = ['data_inserimento','img_preview']
 admin.site.register(Foto,FotoAdmin)
+
+class VideoAdmin(admin.ModelAdmin):
+    list_display=['nome','data_inserimento','img_preview']
+admin.site.register(Video, VideoAdmin)
+
+class PrenotaEventoAdmin(admin.ModelAdmin):
+    list_display=['nome_cliente','cognome_cliente','tipo_evento','data_evento']
+admin.site.register(PrenotaEvento,PrenotaEventoAdmin)

@@ -41,7 +41,7 @@
     $(".event__slider").owlCarousel({
         loop: true,
         margin: 0,
-        items: 3,
+        items: 4,
         dots: false,
         nav: true,
         navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],

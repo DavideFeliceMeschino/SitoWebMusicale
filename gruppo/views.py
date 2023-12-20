@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from .models import Carousel,Eventi, Artisti,Commenti,Foto
-from .forms import CandidatiForm, CommentiForm
+from .models import Carousel,Eventi, Artisti,Commenti,Foto,Video
+from .forms import CandidatiForm, CommentiForm,PrenotaEventiForm
 
 # Create your views here.
 def home(request):
@@ -11,10 +11,32 @@ def home(request):
 
 def fotopage(request):
     foto = Foto.objects.all()
-    return render(request, 'fotopage.html', {'foto':foto,})
+
+    form=CommentiForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            commenti=form.save()
+            return redirect('gruppo:foto')
+    else:
+       form =CommentiForm()
+       commenti = Commenti.objects.all()
+    return render (request, 'fotopage.html',{'foto':foto,'form':form,'commenti':commenti})
+
+    
+    
 
 def videopage(request):
-    return render(request, 'videopage.html', {})
+    video = Video.objects.all()
+    form=CommentiForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            commenti=form.save()
+            return redirect('gruppo:video')
+    else:
+       form =CommentiForm()
+       commenti = Commenti.objects.all()
+    return render (request, 'videopage.html',{'form':form,'commenti':commenti, 'video':video})
+    
 
 def chisiamo(request):
     artisti = Artisti.objects.all()
@@ -31,4 +53,12 @@ def lavoraconnoi(request):
     return render(request, 'lavoraconnoi.html', {'form':form})
 
 def prenotaevento(request):
-    return render(request, 'prenotaevento.html', {})
+    
+    if request.method=="POST":
+        form=PrenotaEventiForm(request.POST)
+        if form.is_valid():
+            prenotaevento=form.save()
+            return redirect('gruppo:home')
+    else:
+        form=PrenotaEventiForm()
+    return render(request, 'prenotaevento.html', {'form':form})

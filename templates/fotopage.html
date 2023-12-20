@@ -28,8 +28,28 @@
     </div>
 
     <br><br><br><br>
+     
       <div class="container">
-        Commenti degli Utenti
+        <div class="row">            
+          <div class="col-10">
+            {% for commento in commenti %}
+        <div class="card bg-light mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+              <h4 class="card-title">{{commento.nome}}</h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{commento.email}}</h6>
+              <p class="card-text">{{commento.commento}}.</p>
+            </div>
+          </div>
+        {% endfor %}
+          </div>
+          <div class="col-2">
+            Saluta la Band!
+            <form class="form-group" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary">Invia</button>
+          </div>
+        </div>
       </div>
 
 </section>
