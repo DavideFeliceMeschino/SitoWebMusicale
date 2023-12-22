@@ -37,6 +37,16 @@ class Eventi(models.Model):
     
     def img_preview(self):
         return mark_safe(f'<img src="{self.img.url}" width=150/>')
+    
+
+class Ruolo(models.Model):
+    nome = models.CharField(max_length=150, unique=True)
+
+    def __str__(self):
+        return self.nome
+    
+    class Meta:
+        verbose_name_plural = "ruoli"
        
     
     
@@ -48,6 +58,7 @@ class Artisti(models.Model):
     strumento = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
     esperienza = models.TextField()
+    
     img = models.ImageField('Foto Profilo', upload_to='img_artisti', blank=True,null=True)
     img_resize =ImageSpecField(source='img', processors=[ResizeToFit(150,150)], format='PNG',options={'quality':50})
 
@@ -100,7 +111,7 @@ class Candidati(models.Model):
 class Commenti(models.Model):
     nome = models.CharField(max_length=200)
     email = models.EmailField(max_length=250)
-    commento = models.CharField(max_length=250)    
+    commento = models.TextField(max_length=500)    
     
 
     def __str__(self):
@@ -142,3 +153,5 @@ class PrenotaEvento(models.Model):
     indirizzo_evento = models.CharField("Via/Piazza e numero civico",max_length=255, null=True, blank=True)
     seleziona_artisti = models.CharField('Seleziona artisti',max_length=50,default=' ',choices=ARTIST_TYPE_CHOICE)
     data_evento  = models.DateTimeField()
+
+    

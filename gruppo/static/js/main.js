@@ -45,7 +45,7 @@
         dots: false,
         nav: true,
         navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-        smartSpeed: 1200,
+        smartSpeed: 1800,
         autoHeight: false,
         autoplay: true,
         responsive: {

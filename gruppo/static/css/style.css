@@ -142,7 +142,7 @@ ol {
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: top center;
+	background-position: bottom center;
 }
 
 .spad {
@@ -263,7 +263,8 @@ ol {
 -----------------------*/
 
 .header {
-	background: rgba(42, 1, 74, 1) !important;
+	background: rgba(42, 1, 74, 0.5) !important; 
+	
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -355,7 +356,7 @@ ol {
 .header__menu ul li a {
 	font-size: 15px;
 	text-transform: uppercase;
-	color: #ffffff;
+	color: #090909;
 	display: block;
 	padding: 6px 0;
 	position: relative;
@@ -399,8 +400,8 @@ ol {
 -----------------------*/
 
 .hero {
-	padding-top: 400px;
-	padding-bottom: 295px;
+	padding-top: 600px;
+	padding-bottom: 500px;
 	position: relative;
 }
 

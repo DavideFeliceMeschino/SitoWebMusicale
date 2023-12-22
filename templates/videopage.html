@@ -37,19 +37,14 @@
     <br><br><br><br>
    
         
-     
-      <div class="container">
-        
         <div class="row">            
           <div class="col-10">
             {% for commento in commenti %}
-        <div class="card bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-body">
+            <div class="alert bg-light mb-3" role="alert">
               <h4 class="card-title">{{commento.nome}}</h4>
               <h6 class="card-subtitle mb-2 text-muted">{{commento.email}}</h6>
               <p class="card-text">{{commento.commento}}.</p>
             </div>
-          </div>
         {% endfor %}
           </div>
           <div class="col-2">
@@ -60,7 +55,7 @@
                 <button type="submit" class="btn btn-primary">Invia</button>
           </div>
         </div>
-      </div>
+    </div>
 
 </section> 
 <!-- Youtube Section End -->

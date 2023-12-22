@@ -39,8 +39,38 @@ class CommentiForm(forms.ModelForm):
         fields = ['nome','email','commento','captcha']   
 
 class PrenotaEventiForm(forms.ModelForm):
-    captcha = CaptchaField()
+    captcha = CaptchaField() 
+    seleziona_artista = forms.MultipleChoiceField(
+        choices=[('cantante','Cantante'),
+        ('deejay','Deejay'),
+        ('animatrica','Animatrice'),
+        ('presentatore','Presentatore'),
+        ('sax','Sax'),
+        ('violino','Violino'),
+        ('tastiera','Tastiera'),
+        ('bassista','Bassista'),
+        ('percussioni','Percussioni'),
+        ('batteria','Batteria')]
+    )
+
     class Meta:
         model = PrenotaEvento
-        fields = '__all__'
-        
+        fields = ['nome_cliente','cognome_cliente','email','citta','provincia','telefono','tipo_evento','luogo','citta_evento','prov_evento','indirizzo_evento','data_evento','seleziona_artista','captcha'  ]
+    
+    
+    def __init__(self, *args, **kwargs):
+        super(PrenotaEventiForm, self).__init__(*args, **kwargs)
+        self.fields['nome_cliente'].widget.attrs.update({'class':'form-control input_elem', 'required':True,'autocomplete': 'nome_contatto', 'placeholder':'Nome*'})
+        self.fields['cognome_cliente'].widget.attrs.update({'class':'form-control input_elem', 'required':True,'autocomplete': 'cognome_contatto', 'placeholder':'Cognome*'})
+        self.fields['email'].widget.attrs.update({'class':'form-control input_elem', 'pattern':"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$",'required':False,'autocomplete': 'email', 'placeholder':'Email'})
+        self.fields['citta'].widget.attrs.update({'class':'form-control input_elem', 'required':True,'autocomplete': 'citta_contatto', 'placeholder':'Città*'})
+        self.fields['provincia'].widget.attrs.update({'class':'form-control input_elem', 'pattern':"^[a-zA-Z]{2}$", 'required':True,'autocomplete': 'provincia_contatto', 'placeholder':'Sigla della provincia*'})
+        self.fields['telefono'].widget.attrs.update({'class':'form-control input_elem', 'required':True,'autocomplete': 'cellulare_contatto', 'placeholder':'Cellulare*'})
+        self.fields['tipo_evento'].widget.attrs.update({'class':'form-control input_elem', 'required':True,'autocomplete': 'tipo_evento', 'placeholder':'Tipo di evento (matrimonio, compleanno,...)*'})
+        self.fields['luogo'].widget.attrs.update({'class':'form-control input_elem', 'required':False,'autocomplete': 'luogo_evento', 'placeholder':'Nome della sala o del luogo privato'})
+        self.fields['citta_evento'].widget.attrs.update({'class':'form-control input_elem', 'required':True,'autocomplete': 'citta_evento', 'placeholder':'Città*'})
+        self.fields['prov_evento'].widget.attrs.update({'class':'form-control input_elem', 'pattern':"^[a-zA-Z]{2}$", 'required':True,'autocomplete': 'provincia_evento', 'placeholder':'Sigla della provincia*'})
+        self.fields['indirizzo_evento'].widget.attrs.update({'class':'form-control input_elem', 'required':False,'autocomplete': 'indirizzo_evento', 'placeholder':'Via/Piazza e numero civico'})
+        self.fields['data_evento'].widget.attrs.update({'class':'form-group col-md-6', 'required':True, 'placeholder':'gg/mm/aaaa*'})
+        # self.fields['seleziona_artisti'].widget.attrs.update({'size':3,'class':'form-group col-md-6', 'required':True, 'placeholder':'Partecipanti della band all\'evento*'})
+

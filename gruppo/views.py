@@ -52,13 +52,12 @@ def lavoraconnoi(request):
         form = CandidatiForm()
     return render(request, 'lavoraconnoi.html', {'form':form})
 
-def prenotaevento(request):
-    
-    if request.method=="POST":
-        form=PrenotaEventiForm(request.POST)
+def prenotaevento(request):    
+    if request.method == 'POST':
+        form = PrenotaEventiForm(request.POST)
         if form.is_valid():
-            prenotaevento=form.save()
+            prenotaevento = form.save()
             return redirect('gruppo:home')
     else:
-        form=PrenotaEventiForm()
+        form = PrenotaEventiForm()
     return render(request, 'prenotaevento.html', {'form':form})
