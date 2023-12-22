@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<header>
+<header class="header">
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -37,9 +37,10 @@
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <div class="header__logo">
-                    <a href="{% url "gruppo:home" %}"><img src="{% static "img/puppets3.jpg" %}" width=70></a>
+                    <a href="{% url "gruppo:home" %}"><img src="{% static "img/logoCarlo.png" %}" width=500></a>
                 </div>
             </div>
+        
             <div class="col-lg-10 col-md-10">
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
@@ -145,8 +146,7 @@
     </footer>
 
     <!-- Footer Section End -->
-{% block script %}
-{% endblock script %}
+
 
     <!-- Js Plugins -->
     <script src="{% static "js/jquery-3.3.1.min.js" %}"></script>
@@ -162,6 +162,9 @@
     <!-- Music Plugin -->
     <script src="{% static "js/jquery.jplayer.min.js" %}"></script>
     <script src="{% static "js/jplayerInit.js" %}"></script>
-    
+    {% block script %}
+
+   
+{% endblock script %}
 </body>
 </html>

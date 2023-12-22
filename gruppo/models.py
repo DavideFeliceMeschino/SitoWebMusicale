@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 from django.utils.html import mark_safe
 #Librerie per Resize Img
 from imagekit.models import ImageSpecField, ProcessedImageField
-from imagekit.processors import ResizeToCover, ResizeToFit
+from imagekit.processors import ResizeToCover, ResizeToFit,ResizeToFill
 
 # Create your models here.
 
@@ -40,7 +40,7 @@ class Eventi(models.Model):
     
 
 class Ruolo(models.Model):
-    nome = models.CharField(max_length=150, unique=True)
+    nome = models.CharField(max_length=150,blank=True,null=True, unique=True)
 
     def __str__(self):
         return self.nome
@@ -57,8 +57,7 @@ class Artisti(models.Model):
     data_nascita = models.DateField('Data di nascita')
     strumento = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)
-    esperienza = models.TextField()
-    
+    esperienza = models.TextField()    
     img = models.ImageField('Foto Profilo', upload_to='img_artisti', blank=True,null=True)
     img_resize =ImageSpecField(source='img', processors=[ResizeToFit(150,150)], format='PNG',options={'quality':50})
 
@@ -87,7 +86,7 @@ class Video(models.Model):
     data_inserimento = models.DateTimeField(auto_now_add=True)
     data_modifica = models.DateTimeField(auto_now=True)
     img = models.ImageField(upload_to='img_video/%Y/%m/%d/', default='no-image.png')
-    img_resized = ImageSpecField(source='img',processors=[ResizeToFit(250,250)],format='PNG',options={'quality': 60})
+    img_resized = ImageSpecField(source='img',processors=[ResizeToCover(250,250)],format='PNG',options={'quality': 60})
 
     def __str__(self):
         return f"{self.nome}"
@@ -111,7 +110,8 @@ class Candidati(models.Model):
 class Commenti(models.Model):
     nome = models.CharField(max_length=200)
     email = models.EmailField(max_length=250)
-    commento = models.TextField(max_length=500)    
+    commento = models.TextField(max_length=500) 
+   
     
 
     def __str__(self):

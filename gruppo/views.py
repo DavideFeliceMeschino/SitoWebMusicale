@@ -6,11 +6,11 @@ from .forms import CandidatiForm, CommentiForm,PrenotaEventiForm
 # Create your views here.
 def home(request):
     slides = Carousel.objects.all()
-    eventi = Eventi.objects.all()
+    eventi = Eventi.objects.all().order_by('data')
     return render(request, 'home.html',{'slides':slides,'eventi':eventi})
 
 def fotopage(request):
-    foto = Foto.objects.all()
+    foto = Foto.objects.all().order_by('data_inserimento')
 
     form=CommentiForm(request.POST)
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def fotopage(request):
             return redirect('gruppo:foto')
     else:
        form =CommentiForm()
-       commenti = Commenti.objects.all()
+    commenti = Commenti.objects.all().order_by('id')
     return render (request, 'fotopage.html',{'foto':foto,'form':form,'commenti':commenti})
 
     

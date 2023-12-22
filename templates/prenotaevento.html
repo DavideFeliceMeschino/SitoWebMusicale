@@ -1,86 +1,212 @@
 {% extends "base.html" %}
 {% block title %}Prenota Evento{% endblock title %}
+{% block style %}
+<style>
+  section {
+      margin-top:35px;
+      margin-bottom:35px;
+  }
+  .input_elem, #id_captcha_1 {
+      height: 50px;
+      font-size: 13px;
+      color: #666666;
+      padding-left: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #e1e1e1;
+  }
+  #lbl_captcha {
+      text-align:right;
+      height:50px;
+      line-height: 50px;
+  }
+  p.invalid-feedback {
+      margin:-10px 0 10px 0;
+      padding-left:5px;
+  }
+  p#errore_captcha {
+      text-align:center;
+  }
+  </style>   
+{% endblock style %}
 
 {% block content %}
+<br><br>
 <section class="youtube spad">
     
+   
+     <!-- Contact Section Begin -->
+     <section class="contact spad">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4">
+                  <div class="contact__address">
+                      <div class="section-title">
+                          <h2>Contatti</h2>
+                      </div>
+                      <p>Puoi chiamarci al telefono o scriverci per e-mail: ti risponderemo al più presto!</p>
+                      <ul>
+                          <li>
+                              <i class="fa fa-phone"></i>
+                              <h5>Cellulare</h5>
+                              <span>1-677-124-44227</span>
+                          </li>
+                          <li>
+                              <i class="fa fa-envelope"></i>
+                              <h5>Email</h5>
+                              <p>puppets.eventi@gmail.com</p>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+
     <div class="container">
-      <h2>Prenota Evento</h2>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <form method="post" action="{% url "gruppo:prenotaevento" %}">
-            
-                {% csrf_token %}
-                {{form.as_div}}              
-            
-                <button type="submit" class="btn btn-primary">Prenota</button>
-            
-          </form>
+      <div class="col-lg-8">
+        <div class="contact__form">
+            <div class="section-title">
+                <h2>Prenota il tuo evento</h2>
+            </div>
+      <form method="post" action="{% url "gruppo:prenotaevento" %}">
+        {% csrf_token %}
+        {% csrf_token %}
+        {% if messaggio %}
+          <p class="text-success">{{ messaggio }}</p>
+        {% endif %}
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <div class="text-danger">{{error}}</div>
+            {% endfor %}
+            <br>
+        {% endif %}
+        <fieldset>
+          <legend>Dati Personali</legend>
+          <div class="form-row">
+              <div class="col-md-6">
+                  <!--<input class="form-control input_elem" type="text" placeholder="Nome">-->
+                  {{ form.nome_cliente }}
+                  {% for error in form.nome_cliente.errors  %}
+                  <p class="invalid-feedback  d-block">{{error}}</p>
+                  {% endfor %}
+              </div>
+              <div class="col-md-6">
+                <!--<input class="form-control input_elem" type="text" placeholder="Cognome">-->
+                {{ form.cognome_cliente }}
+                {% for error in form.cognome_cliente.errors  %}
+                <p class="invalid-feedback  d-block">{{error}}</p>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+              <!--<input class="form-control input_elem" type="email" placeholder="Email">-->
+              {{ form.email }}
+              {% for error in form.email.errors  %}
+              <p class="invalid-feedback  d-block">{{error}}</p>
+              {% endfor %}
+            </div>
+            <div class="col-md-6">
+              <!--<input class="form-control input_elem" type="text" placeholder="Città">-->
+              {{ form.citta }}
+              {% for error in form.citta.errors  %}
+              <p class="invalid-feedback  d-block">{{error}}</p>
+              {% endfor %}
+            </div>
+            <div class="col-md-6">
+              <!--<input class="form-control input_elem" type="text" placeholder="Sigla della provincia">-->
+              {{ form.provincia }}
+              {% for error in form.provincia.errors  %}
+              <p class="invalid-feedback  d-block">{{error}}</p>
+              {% endfor %}
+            </div>
+            <div class="col-md-6">
+              <!--<input class="form-control input_elem" type="text" placeholder="Cellulare (solo cifre, senza spazi)">-->
+              {{form.telefono}}
+              {% for error in form.cellulare_contatto.errors  %}
+              <p class="invalid-feedback  d-block">{{error}}</p>
+              {% endfor %}
+            </div>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Dati per l'Evento</legend>
+          <div class="form-row">
+              <div class="col-md-12">
+                  <!--<input type="text" class="form-control input_elem" id="tipo_evento" placeholder="Tipo di evento (matrimonio, compleanno,...)">-->
+                  {{ form.tipo_evento }}
+                  {% for error in form.tipo_evento.errors  %}
+                  <p class="invalid-feedback  d-block">{{error}}</p>
+                  {% endfor %}
+              </div>
+              <div class="col-md-12">
+                <!--<input type="text" class="form-control input_elem" id="nome_luogo" placeholder="Nome della sala o del luogo privato">-->
+                {{ form.luogo }}
+                {% for error in form.luogo_evento.errors  %}
+                <p class="invalid-feedback  d-block">{{error}}</p>
+                {% endfor %}
+            </div>
+            <div class="col-md-6">
+              <!--<input class="form-control input_elem" id="citta_evento" type="text" placeholder="Città">-->
+              {{ form.citta_evento }}
+              {% for error in form.citta_evento.errors  %}
+              <p class="invalid-feedback  d-block">{{error}}</p>
+              {% endfor %}
+          </div>
+            <div class="col-md-6">
+                <!--<input class="form-control input_elem" id="provincia_evento" type="text" placeholder="Sigla della provincia">-->
+                {{ form.prov_evento}}
+                {% for error in form.provincia_evento.errors  %}
+                <p class="invalid-feedback  d-block">{{error}}</p>
+                {% endfor %}
+            </div>
+            <div class="col-md-12">
+                <!--<input class="form-control input_elem" id="indirizzo_evento" type="text" placeholder="Via/Piazza e numero civico">-->
+                {{ form.indirizzo_evento }}
+                {% for error in form.indirizzo_evento.errors  %}
+                <p class="invalid-feedback  d-block">{{error}}</p>
+                {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                <!--<select id="inputState" id="componenti_evento" class="form-control input_elem">
+                    <option selected>Partecipanti della band all'evento</option>
+                    <option>...</option>
+                  </select>-->
+                  <label for="componenti">Partecipanti della band all'evento*</label>
+                  {{ form.seleziona_artista }}
+                  {% for error in form.componenti.errors  %}
+                    <p class="invalid-feedback  d-block">{{error}}</p>
+                  {% endfor %}
+            </div>
+            <div class="form-group col-md-6">
+                <!--<input class="form-control input_elem" id="data_evento" type="date">-->
+                <label for="data_evento">Data dell'evento*</label>
+                {{ form.data_evento }}
+                {% for error in form.data_evento.errors  %}
+                <p class="invalid-feedback  d-block">{{error}}</p>
+                {% endfor %}
+            </div>
         </div>
-      </div>
-        
+    </fieldset>
+              <div class="form-row">
+                  <div id="lbl_captcha" class="col-md-6">
+                      <label  for="captcha">Scrivi i caratteri che vedi*</label>
+                  </div>
+                  <div class="col-md-6">
+                      {{ form.captcha }}
+                  </div>
+                  {% if form.captcha.errors %}
+                      {% for error in form.captcha.errors %}
+                          <p id="errore_captcha" class="invalid-feedback  d-block"><strong>{{ error|escape }}</strong></p>
+                      {% endfor %}
+                  {% endif %}
+              </div>
+              <br>
+              <button type="submit" class="site-btn">PRENOTA L'EVENTO</button>
+      </form>
     </div>
+  </div>
+</div>
+</div>
+<br><br>
+
 </section>
-<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
 {% endblock content %}
 
-{% comment %} Informazioni Utente
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputEmail4">Nome</label>
-    <input type="text" class="form-control" >
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputPassword4">Cognome</label>
-    <input type="text" class="form-control" >
-  </div>
-</div>
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputEmail4">Email</label>
-    <input type="email" class="form-control" >
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputPassword4">Città</label>
-    <input type="text" class="form-control" >
-  </div>
-</div>
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputEmail4">Provincia</label>
-    <input type="text" class="form-control" >
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputPassword4">Telefono</label>
-    <input type="text" class="form-control" >
-  </div>
-</div>
-<hr>
-Dati Dell'Evento
-<div class="form-group">
-    <label for="inputEmail4">Tipo di Evento</label>
-    <input type="text" class="form-control" >
-</div>
-<div class="form-group">
-    <label for="inputEmail4">Nome Della Sala/Luogo</label>
-    <input type="text" class="form-control" >
-</div>
-<div class="form-row">
-  <div class="form-group col-md-6">
-    <label for="inputEmail4">Città</label>
-    <input type="text" class="form-control" >
-  </div>
-  <div class="form-group col-md-6">
-    <label for="inputPassword4">Provincia</label>
-    <input type="text" class="form-control" >
-  </div>
-</div>
 
-<div class="form-group">
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="gridCheck">
-    <label class="form-check-label" for="gridCheck">
-      Check me out
-    </label>
-  </div>
-</div> {% endcomment %}

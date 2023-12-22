@@ -70,7 +70,7 @@
     <h1 class="puppets" style="color:black;font-family:"Rockville Solid Regular";font-size: 100px;">Puppets</h1>
 </div>
 <br><br><br><br>
-<div>
+<div style="font-size: ">
 <p>Il gruppo Puppets è il partner perfetto per trasformare i tuoi eventi in esperienze memorabili. Nasce nel 2008 dall’idea degli amici e membri principali della band: Michela Corni, Roberto Verace, Edoardo Vezil e Giovanni Ranieri. Successivamente negli anni entreranno a far parte del gruppo anche gli altri membri, che ne faranno quello che è oggi: un gruppo musicale multiforme.                                     Con un vasto repertorio che spazia dalla disco anni 70, 80, 90 al jazz e pop-elettronico contemporaneo, la nostra musica è pensata per soddisfare tutti i gusti. Offriamo inoltre uno spettacolo coinvolgente e versatile, con esibizioni che variano da set acustici intimi, a performance elettrizzanti a balli scatenati con il nostro dj.   La nostra priorità è far sentire il pubblico parte integrante dello spettacolo!    
 <br>
 Siamo consapevoli dell'importanza dell'affidabilità e della professionalità in un evento per questo lavoriamo a stretto contatto con gli organizzatori per garantire una perfetta integrazione della nostra esibizione nell'ambito complessivo dell’evento. La band, infatti, vanta un'ampia esperienza in occasioni di ogni tipo, tra cui matrimoni, compleanni e serate in locali, creando atmosfere uniche e coinvolgenti, modellando il nostro repertorio per adattarlo al tema o alle esigenze specifiche del tuo evento. 
@@ -84,19 +84,20 @@ Siamo aperti a prenotazioni per eventi di ogni genere!. Collaboriamo con organiz
 
 </div>
 
-
+<br/><br/><br/>
 <!-- Event Section End -->
 <div class="container">
-    <h2>Calendario Eventi</h2>
+    <h2>CALENDARIO EVENTI</h2>
+    <br/><br/><br/>
     <div class="row">
         {% for evento in eventi  %}
         <div class="col-lg-3 col-md-6">            
-            <div class="card" style="width: 18rem;">
+            <div class="card shadow" style="width: 18rem;">
                 <img src="{{evento.img.url}}" class="card-img-top" alt="{{evento.titolo}}">
                 <div class="card-body">
                   <h5 class="card-title">{{evento.titolo}}</h5>
                   <h6 class="card-subtitle mb-2 text-muted">{{evento.data}}</h6>
-                  <p class="card-text">{{evento.descrizione}}</p>
+                  {% comment %} <p class="card-text">{{evento.descrizione}}</p> {% endcomment %}
                   <p class="card-text">{{evento.luogo}}</p>
                  
                 </div>

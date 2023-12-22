@@ -74,3 +74,5 @@ class PrenotaEventiForm(forms.ModelForm):
         self.fields['data_evento'].widget.attrs.update({'class':'form-group col-md-6', 'required':True, 'placeholder':'gg/mm/aaaa*'})
         # self.fields['seleziona_artisti'].widget.attrs.update({'size':3,'class':'form-group col-md-6', 'required':True, 'placeholder':'Partecipanti della band all\'evento*'})
 
+
+        
